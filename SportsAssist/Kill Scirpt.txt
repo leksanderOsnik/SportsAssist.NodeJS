@@ -1,0 +1,8 @@
+/****** KILL SCRIPT BY S. O ROIBIN *********************/ 
+$pstree 
+$ps 
+$ps aux | grep node
+/*** select process ID corresponding to your run of the server *****/ 
+/*** use date and processCreatorID to find thsi ********/ 
+$kill -9 PUT_PROCESS_ID_HERE 
+$ps

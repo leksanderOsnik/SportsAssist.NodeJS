@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>{{post.title}}</title>
+      <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <link href="../../stylesheets/styleFiachra.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+      <script type="text/javascript" src="../../javascripts/main.js"></script>
+   </head>
+   <body>
+      <div id="page-container">
+         <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a class="navbar-brand js-scroll-trigger" href="../">
+            <img class="logo" src="../../images/logo.png"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/teams">My Teams</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/forum">Join the Discussion</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/account">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/logout">Sign Out</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <section class="defaultContainer" style="margin-top:100px;" id="format">
+            <h2 style="text-align:center; margin-bottom: 25px">{{post.title}}</h2>
+            <center>
+            <table id="videoPlayerTable" style="width: 1050px; background-color: white; border: 1px solid #ced4da;" class ="videoPlayerTable">
+               <tr>
+                  <td id="vidTd"  >
+                     <center>
+                        <p style="padding: 20px" class="text-justify">{{post.content}}</p>
+                     </center>
+                  </td>
+               </tr>
+               <tr>
+                  <center>
+                     <td id="infoTd" style="background: white; border: 1px solid #ced4da; height:150px;">
+                        <h5><b>Written By:</b> {{post.author.name}}</h5>
+                        <b>
+                           <h5>Written:
+                        </b>
+                        {{post.created}} </h5>
+                        <br>
+                        {{#if originalAuthor}}
+                        <form action="/deletePost" method="POST">
+                           <button class="button" style="width:150px; margin-left: 20px" type="submit">Delete <i class="fas fa-trash"></i></button>
+                           <button class="button" style="width:150px;" type="button"><a style="color: white" href="/forum/post/{{post.slug}}/edit">Edit <i class="fas fa-pencil-alt"></i></a></button>
+                           <input type="hidden" name="_csrf" value="{{cybersecurity}}">
+                           <input type="hidden" name="id" value="{{post._id}}">
+                        </form>
+                        {{/if}}
+                     </td>
+                  </center>
+               </tr>
+               <tr>
+                  <td id="commentsTd" align="top" style=" background: white; border: 1px solid #ced4da; height:600px;" >
+                     <center>
+                        <h4>Comments:</h4>
+                        <form id="vidForm" style="max-width: 2000px;" class="form-signin" action="/comment" method="POST">
+                           <input type="hidden" name="_csrf" value="{{cybersecurity}}">
+                           <input type="hidden" name="article" value = "{{post._id}}">
+                           <div class="form-group" style="width:800px" >
+                              <table>
+                                 <tr>
+                                    <td><input id="vidCode" style="width:600px;" class="form-control" type="textl" name="comment" placeholder="Write a Comment" value="" />
+                                    </td>
+                                    <td><button class="button" style="width:200px; margin-left: 20px" type="submit" name="upload">Post</button>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </div>
+                        </form>
+                        <div style="width:90%; height:400px; overflow:auto;">
+                           <table id="vidList" style="width: 700px; margin-top: 20px;">
+                              {{#each post.comments}}
+                              <tr>
+                                 <td class="vidCom"><b><span style="font-size: 15px">{{this.name}}</span></b><br><span style="font-size: 15px">{{this.comment}}</span></td>
+                              </tr>
+                              {{/each}}
+                           </table>
+                        </div>
+                     </center>
+                  </td>
+               </tr>
+            </table>
+         </section>
+         <!-- Bootstrap core JavaScript -->
+         <script src="../../vendor/jquery/jquery.min.js"></script>
+         <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <!-- Plugin JavaScript -->
+         <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
+         <!-- Custom scripts for this template -->
+         <script src="../../javascripts/script.js"></script>
+        <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+      <script src="../../javascripts/script.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"> </script>
+   </body>
+</html>

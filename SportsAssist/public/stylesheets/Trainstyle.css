@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One|Francois+One|Play');
+
+html, body, section {
+    height:700px;
+    background-color: #f8f9fa;
+}
+body {
+    color: #fff;
+    text-align: center;
+}
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.xop-container {
+    display: flex;
+}
+div {
+    flex-direction: column;
+    justify-content: center;
+}
+ 
+.xop-left {
+    background: url(../images/pep.jpg);
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    padding: 1rem;
+    transition: all .2s ease-in-out;
+  text-transform: uppercase;
+  filter: grayscale(100%);
+}
+ 
+.xop-right {
+    background: url(../images/kimmich.jpg);
+    background-size: cover;
+    background-position: center;
+    flex: 1;
+    padding: 1rem;
+    transition: all .2s ease-in-out;
+  text-transform: uppercase;
+  filter: grayscale(100%);
+}
+.xop-left:hover, .xop-right:hover {
+    transform: scale(0.95);
+  filter: hue-rotate(0);
+}
+.xop-container h1 {
+    letter-spacing: 2px;
+  font-family: 'Francois One', sans-serif;
+    font-size: 3rem;
+}
+.xop-button {
+    border-radius: 2px;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 6px;
+    margin: 0 1%;
+    text-align: center;
+  font-family: 'Play', sans-serif;
+    text-decoration: none;
+  letter-spacing: 1px;
+    display: inline-block;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    width: 150px;
+}
+ 
+.xop-button:hover {
+    background: #fff;
+    color: #333;
+}
+
+@media only screen and (max-width: 600px) {
+  .xop-container {
+    flex-direction: column;
+  }
+
+}

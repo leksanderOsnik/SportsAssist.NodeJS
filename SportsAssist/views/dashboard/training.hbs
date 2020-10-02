@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <style>
+    
+  </style>
+  <title>Training</title>
+
+  <!-- Bootstrap -->
+
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
+  <link href="../https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+  <link href="../https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <link href="../https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+
+
+  <!-- Stylesheets -->
+
+  <link href="../stylesheets/styleFiachra.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <div id="page-container">
+
+  <!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+      <a class="navbar-brand js-scroll-trigger" href="../">
+
+      <img class="logo" src="../images/logo.png"></a>
+      
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/forum">Join the Discussion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/account">My Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/logout">Sign Out</a>
+            </li>
+
+        </ul>
+
+      
+
+    </div>
+  
+  </nav>
+
+     
+        <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+        <nav class="dashSubMenu" style=" margin-top: 12px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+
+
+    <section class="defaultContainer" style="background-color: #142D48; margin-top:50px" id="contact">
+
+  
+
+        <div class="oneTrain" id="oneDivTrain">
+
+         <h1 id="tag1" style="margin-top:400px; margin-left:100px;"><b>TEAM<br>TRAINING</b></h1>
+
+        </div>
+
+        <div class="twoTrain" id="twoDivTrain">
+
+         <h1 id="tag2" style="margin-top:400px; margin-right:100px; float:right;"><b>INDIVIDUAL<br>TRAINING</b></h1>
+
+        </div>
+
+
+  </section>
+
+  
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../javascripts/script.js"></script>
+
+ <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+
+</div>
+
+  </body>
+</html>

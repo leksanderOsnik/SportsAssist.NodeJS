@@ -1,0 +1,164 @@
+body {
+  margin: 0 auto;
+  padding: 1em 0;
+  
+
+}
+
+.grid {
+  /* Grid Fallback */
+  display: flex;
+  flex-wrap: wrap;
+  
+  /* Supports Grid */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 2em;
+}
+
+.module {
+  /* Demo-Specific Styles */
+  background:url(../images/tra.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+
+/* If Grid is supported, remove the margin we set for the fallback */
+@supports (display: grid) {
+  .module {
+    margin: 0;
+  }
+}
+.module2 {
+  /* Demo-Specific Styles */
+  background:url(../images/Hazard.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+
+.module2:hover, .module3:hover, .module4:hover, .module5:hover, .module6:hover, .module7:hover, .module8:hover{
+
+
+  filter: brightness(0.5)
+}
+
+.module3 {
+  /* Demo-Specific Styles */
+  background:url(../images/silva.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+.module4 {
+  /* Demo-Specific Styles */
+  background:url(../images/pickford.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+.module5 {
+  /* Demo-Specific Styles */
+  background:url(../images/van.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+.module6 {
+  /* Demo-Specific Styles */
+  background:url(../images/ron.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+
+
+.module7 {
+  /* Demo-Specific Styles */
+  background:url(../images/warmUp.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+
+
+.module8 {
+  /* Demo-Specific Styles */
+  background:url(../images/set.jpg);
+   background-size: cover;
+    background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 250px;
+  
+  /* Flex Fallback */
+  margin-left: 5px;
+  margin-right: 5px;
+  flex: 1 1 200px;
+}
+
+h6{
+   color: white;
+  margin: 0;
+  padding: 20px;
+  font-size:25px;
+}

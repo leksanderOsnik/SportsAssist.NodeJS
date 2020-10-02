@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Results</title>
+
+  <!-- Bootstrap -->
+
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+  <!-- Fonts -->
+
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+
+  <!-- Stylesheets -->
+
+  <link href="../stylesheets/styleFiachra.css" rel="stylesheet">
+  <link href="../stylesheets/Shainfixturesstyle.css" rel="stylesheet">
+
+
+  <script>
+
+    $(document).ready(function(){
+
+      $("#result1").css("background-color", "#A2D890");
+      $("#result2").css("background-color", "#FFF4AA");
+      $("#result3").css("background-color", "#F1A1AD");
+
+    });
+
+  </script>
+
+</head>
+<body>
+
+    <div id="page-container">
+
+  <!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+      <a class="navbar-brand js-scroll-trigger" href="../">
+
+      <img class="logo" src="../images/logo.png"></a>
+      
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/teams">My Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/forum">Join the Discussion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/account">My Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/logout">Sign Out</a>
+            </li>
+
+        </ul>
+
+      
+
+    </div>
+  
+  </nav>
+
+    
+        <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+     <nav class="dashSubMenu" style=" margin-top: -68px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+
+  <section class="defaultContainer"  id="forum">
+<div class="container" style="margin-top: 130px"><center>
+ <h2 class="fixt">Results</h2></center>
+ <div class="container-md" id="fixturesmain">
+    <form style="width:1100px;"action="/dashboard/results" method="POST">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+            <input type="hidden" name="team" value = "{{team._id}}">
+            {{#if user.userType}}
+            <table class="resultsAndFix">
+              <tr>
+                <td>
+                  <input type="date" style="width:100%" id="date" name="date" placeholder="Date" value="">
+                </td>
+                <td>
+                  <input type="text" style="width:100%" id="time" name="time" placeholder="Kick Off" value="">
+                </td>
+                <td>
+                  <select class="form-control" style="width:100px" name="venue" id="userType" >
+                    <option value="Home">Home</option>
+                    <option value="Away">Away</option>
+                  </select>
+                </td>
+                <td>
+                  <input type="text" style="width:100%" id="team" name="versus" placeholder="Opponent" value="">
+                </td>
+                <td>
+                  <input type="text" style="width:100%" id="name" name="ref" placeholder="Referee" value="">
+                </td>
+                <td>
+                  <input type="text" style="width:100%" id="name" name="score" placeholder="Score" value="">
+                </td>
+                <td>
+                   <select class="form-control" style="width:100px" name="result" id="userType">
+                  <option value="1">Win</option>
+                  <option value="2">Draw</option>
+                  <option value="3">Loss</option>
+                </select>
+                </td>
+                <td>
+                  <button class="button" style="width:50px"><i class="fas fa-paper-plane"></i></button>
+                </td>
+              </tr>
+            </table>
+            {{/if}}
+          </form>
+            <center>
+            <table class="contactTab">
+              <tr>
+                <th>
+                  Date
+                </th>
+                <th>
+                  Kick Off
+                </th>
+                <th>
+                  Venue
+                </th>
+                <th>
+                  Opponent
+                </th>
+                <th>
+                  Referee
+                </th>
+                <th>
+                  Score
+                </th>
+                {{#if user.userType}}
+                <th>
+                  Delete
+                </th>
+                {{/if}}
+              </tr>
+                {{#each result}}
+              <tr>
+                <td>
+                  {{this.date}}
+                </td>
+                <td>
+                  {{this.time}}
+                </td>
+                <td>
+                  {{this.venue}}
+                </td>
+                <td>
+                  {{this.versus}}
+                </td>
+                <td>
+                  {{this.ref}}
+                </td>
+                <td id="result{{this.result}}">
+                  {{this.score}}
+                </td>
+                 {{#if ../user.userType}}
+                <td>
+                  <form method="POST" style="margin:0px; padding:0px; display:inline;" action="/dashboard/results/delete">
+                    <input type="hidden" name="_csrf" value="{{../cybersecurity}}"/>
+                    <input type="hidden" name="resID" value = "{{this._id}}">
+                  <button class="button" style="width:50px"><i class="fas fa-trash"></i></button>
+                </form>
+                </td>
+              </tr>
+              {{/if}}
+              {{/each}}
+            </table>
+          </center>
+   
+  </div>
+   
+   
+  </section>
+  
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../javascripts/script.js"></script>
+   <script src="../javascripts/script.js"></script>
+
+
+   <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+
+</div>
+
+  </body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Defensive</title>
+      <!-- Bootstrap -->
+      <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Fonts -->
+      <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../vendor/simple-line-icons/css/simple-line-icons.css">
+      <!-- Stylesheets -->
+      <link href="../../../stylesheets/styleFiachra.css" rel="stylesheet">
+      <style>
+h1{
+  text-align: center;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+img{
+  height: 250px;
+}
+
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+
+.card{
+  height: 100%;
+}
+.row{
+  height: auto;
+}
+}
+</style>
+   </head>
+   <body>
+      <div id="page-container">
+         <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a class="navbar-brand js-scroll-trigger" href="../../../">
+            <img class="logo" src="../../../images/logo.png"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="#">My Teams</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/forum">Join the Discussion</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/account">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/logout">Sign Out</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+            <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+      <nav class="dashSubMenu" style=" margin-top: -52px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+         <section class="defaultContainer" style="height: auto;" id="dash">
+             <div class="container" style="margin-top: 115px;height:1900px;">
+             <center><h2>Defensive Drills</h2></center>
+<br>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <img src="../../../images/shape.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Team Shape Defending drill</h4>
+        <p class="title">5-10 minutes</p>
+       <p><b>Set Up</b> your defensive shape</p>
+        <p><b>Players Needed:</b> your 10 outfield players</p>
+        <p><b>Explanation:</b> Put your team into their defensive shape. Position the ball in different postions and make the team carry out their defensive movements. For Example if the ball is on the ldt side your team woukd shuffle over to that side,</p>
+        <center><a href="https://www.youtube.com/watch?v=1aiJegSIgK4" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="column">
+    <div class="card">
+      <img src="../../../images/gegen.PNG" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Gegenpressing drill</h4>
+        <p class="title">5-10 minutes</p>
+       <p><b>Set Up</b>: size of grid differs depending on the number of players. 4 small goals around the square</p>
+        <p><b>Players Needed:</b>9-21 players 3 teams</p>
+        <p><b>Explanation:</b> Each of the three teams pass a ball. Coach shouts the color of one team and that team can score in any of the four goals. The other two temas try to prevent them from scoring.</p>
+       <br>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+        <img src="../../../images/half.PNG" alt="Mike" style="width:100%">
+      <div class="container">
+        <h4>Gegenpressing drill #2</h4>
+        <p class="title">10-25 minutes</p>
+       <p><b>Set Up</b>: A grid split into 2 halves</p>
+        <p><b>Players Needed:</b> 14-20 pllayers</p>
+        <p><b>Explanation:</b> Two teams attempt to paly 10 passes in their half. if they do they are awarded a point. 6 players can defend in the opposition half. The defending team can switch play after winning the ball</p>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <div class="card">
+            <img src="../../../images/spain1v1.PNG" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Spains 1 v1 drill</h4>
+        <p class="title">10-25 minutes</p>
+       <p><b>Set Up</b>: 16 x 8 yard grid small goals at each end</p>
+        <p><b>Players Needed:</b> 2 in the middle and team teams on the outside</p>
+        <p><b>Explanation:</b> Drill starts in the middle of the grid where the two players try to get the ball. the player who wins poession attacks he others goal.if he scores he must run v=back and touch his goal before defending. if the ball goes out of play one of the players plays the ball back in</p>
+        <center><a href="https://www.youtube.com/watch?v=kpzQQbCDVaY" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+      <img src="../../../images/attack.jpg" alt="Mike" style="width:100%">
+       <div class="container">
+        <h4>Man City Attacking/Defending Game</h4>
+        <p class="title">15-30 minutes</p>
+       <p><b>Set Up</b>:1 big goal 2 samll goals and half the pitch</p>
+        <p><b>Players Needed:</b> 3 attackers 3 defenders and 1 goalie</p>
+        <p><b>Explanation:</b>Defenders eitheir side of the goal plays a ball to an attacker.An attckers first touch triggers the game. The attackers look to combine and score.is starts out as a 3 v2 then goes to a 3v3 when the 3rd defender make a recevory run If the defenders win the ball back they try to score in one of the small goals. </p>
+        <center><a href="https://www.youtube.com/watch?v=CuBR3QWYFYY&list=PLWV3d6hqH1xMpTMIMGxD-KXRK-se04rg0&index=7" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+        <img src="../../../images/emery.jpg" alt="Mike" style="width:100%">
+       <div class="container">
+        <h4>Unai Emery 3 v 3 game</h4>
+        <p class="title">10-20 minutes</p>
+       <p><b>Set Up</b>:20 x 20 pitch with two goals</p>
+        <p><b>Players Needed:</b>3 temas of 3</p>
+        <p><b>Explanation:</b>team one attacks  team two.If team two win back the ball they attck team three. if team one beats team two they get the ball back and attack team three. this process is continually repeated. To make this game harder limit player touches to one or two touches. 
+        </p>
+        <center><a href="https://www.youtube.com/watch?v=8r_jIfTpq3U&list=PLWV3d6hqH1xMpTMIMGxD-KXRK-se04rg0&index=9" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+    </div>
+  </div>
+</div>
+         </section>
+         <!-- Bootstrap core JavaScript -->
+         <script src="../../../vendor/jquery/jquery.min.js"></script>
+         <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <!-- Plugin JavaScript -->
+         <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+         <!-- Custom scripts for this template -->
+         <script src="../../../javascripts/script.js"></script>
+       <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+      </div>
+   </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <style>
+h1{
+  text-align: center;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+img{
+  height: 250px;
+}
+
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+
+.card{
+  height: 100%;
+}
+.row{
+  height: auto;
+}
+</style>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Shooting</title>
+      <!-- Bootstrap -->
+      <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Fonts -->
+      <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../vendor/simple-line-icons/css/simple-line-icons.css">
+      <!-- Stylesheets -->
+      <link href="../../../stylesheets/styleFiachra.css" rel="stylesheet">
+      <link href="../../../stylesheets/insideTrain(Shain).css" rel="stylesheet">
+   </head>
+   <body>
+      <div id="page-container">
+         <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a class="navbar-brand js-scroll-trigger" href="../../../">
+            <img class="logo" src="../../../images/logo.png"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/teams">My Teams</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/forum">Join the Discussion</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/account">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/logout">Sign Out</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+            <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+      <nav class="dashSubMenu" style=" margin-top: -68px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+         <section class="defaultContainer" style="height: auto;" id="dash">
+             <div class="container" style="margin-top: 115px;height:1900px;">
+            <center> <h2>Shooting Drills</h2></center>
+<br>
+
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+<img src="../../../images/mkdons.PNG" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Mk Dons shooting drill</h4>
+        <p class="title">10-20 minutes</p>
+       <p><b>Set Up</b>3 stations and a goal</p>
+        <p><b>Players Needed:</b> 2 passers 1 attacker 1 goalie and 3 defenders</p>
+        <p><b>Explanation:</b> First passer plays a ball to the attcker who, with his first touch turns the first defender. After that he takes on one of the other defenders and tries to score. After the shot this process is repeated but different passer and defender</p>
+        <center><a href="https://www.youtube.com/watch?v=ejiuZsEVhrw" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="column">
+    <div class="card">
+      <img src="../../../images/swansea.jpg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Swansea City Shooting drill</h4>
+        <p class="title">10-25 minutes</p>
+       <p><b>Set Up</b>: 3 stations two eitheir side of the box and one centrally just ouside of the box</p>
+        <p><b>Players Needed:</b> at least 2 players at each station</p>
+        <p><b>Explanation:</b> player at the station to the left takes a shot after that shot he lays the ball off for the player at the central station to shoot first time. After they shoot they go and defend the player at the station to the right. The player at the staion to the right tries to beat them and score</p>
+        <center><a href="https://www.youtube.com/watch?v=aHpyERP58N8" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+       <br>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+         <img src="../../../images/barca.PNG" alt="Mike" style="width:100%">
+      <div class="container">
+        <h4>Barcelona Shooting drill</h4>
+        <p class="title">10-25 minutes</p>
+       <p><b>Set Up</b>:1 big goal 2 small goal outside of the box.</p>
+        <p><b>Players Needed:</b> at leats 2 defender and 3 attackers</p>
+        <p><b>Explanation:</b> player looks to attack and score in either mini goal if the score the reward is for the player to take a shot at the goalie. if the attcking player fails to score then they become the defender and the defender gets to take the shot</p>
+        <center><a href="https://www.youtube.com/watch?v=IZfwsmZRkz4" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="column">
+    <div class="card">
+            <img src="../../../images/spain1v1.PNG" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Spains 1 v1 drill</h4>
+        <p class="title">10-25 minutes</p>
+       <p><b>Set Up</b>: 16 x 8 yard grid small goals at each end</p>
+        <p><b>Players Needed:</b> 2 in the middle and team teams on the outside</p>
+        <p><b>Explanation:</b> Drill starts in the middle of the grid where the two players try to get the ball. the player who wins poession attacks he others goal.if he scores he must run v=back and touch his goal before defending. if the ball goes out of play one of the players plays the ball back in</p>
+        <center><a href="https://www.youtube.com/watch?v=kpzQQbCDVaY" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+      <img src="../../../images/brazil.jpg" alt="Mike" style="width:100%">
+       <div class="container">
+        <h4>Brazil 3 v 2 Attack game</h4>
+        <p class="title">15-30 minutes</p>
+       <p><b>Set Up</b>:1 goal and half the pitch</p>
+        <p><b>Players Needed:</b> 6 attackers 4 defenders and 1 goalie</p>
+        <p><b>Explanation:</b>The 3 attackers take on the two defenders and try to score. The attackers satrt at the halfway line and the defenders start at the endline. if the defenders win the ball it becomes a 3 v 3 as the goalie is a defender in possesion and they attempt to play out. the game continues until the ball goes out of play</p>
+        <center><a href="https://www.youtube.com/watch?v=MeEP_zREtxs&list=PLWV3d6hqH1xMpTMIMGxD-KXRK-se04rg0&index=4" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+        <img src="../../../images/attack.jpg" alt="Mike" style="width:100%">
+       <div class="container">
+        <h4>Man City Attacking Game</h4>
+        <p class="title">15-30 minutes</p>
+       <p><b>Set Up</b>:1 big goal 2 samll goals and half the pitch</p>
+        <p><b>Players Needed:</b> 3 attackers 3 defenders and 1 goalie</p>
+        <p><b>Explanation:</b>Defenders eitheir side of the goal plays a ball to an attacker.An attckers first touch triggers the game. The attackers look to combine and score.is starts out as a 3 v2 then goes to a 3v3 when the 3rd defender make a recevory run If the defenders win the ball back they try to score in one of the small goals. </p>
+        <center><a href="https://www.youtube.com/watch?v=CuBR3QWYFYY&list=PLWV3d6hqH1xMpTMIMGxD-KXRK-se04rg0&index=7" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a></center>
+    </div>
+  </div>
+</div>
+         </section>
+         <!-- Bootstrap core JavaScript -->
+         <script src="../../../vendor/jquery/jquery.min.js"></script>
+         <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <!-- Plugin JavaScript -->
+         <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+         <!-- Custom scripts for this template -->
+         <script src="../../../javascripts/script.js"></script>
+       <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+      </div>
+   </body>
+</html>

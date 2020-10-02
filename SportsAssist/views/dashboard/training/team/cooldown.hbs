@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Cool Down</title>
+      <!-- Bootstrap -->
+      <link href="../../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Fonts -->
+      <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../../vendor/simple-line-icons/css/simple-line-icons.css">
+      <!-- Stylesheets -->
+      <link href="../../../stylesheets/styleFiachra.css" rel="stylesheet">
+      <style>
+h1{
+  text-align: center;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+img{
+  height: 250px;
+}
+
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+    height: 100%;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+
+.card{
+  height: 100%;
+}
+.row{
+  height: auto;
+}
+</style>   </head>
+   <body>
+      <div id="page-container">
+         <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a class="navbar-brand js-scroll-trigger" href="../../../">
+            <img class="logo" src="../../../images/logo.png"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/teams">My Teams</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/forum">Join the Discussion</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/account">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link"  href="/logout">Sign Out</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+            <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+      <nav class="dashSubMenu" style=" margin-top: -52px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+         <section class="defaultContainer" style="height:auto"  id="dash">
+            <div class="container" style="margin-top: 115px">
+
+<center><h2>Cooldowns</h2></center>
+<br>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <div class="container">
+        <img src="../../../images/line.PNG" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>General Cooldown</h4>
+        <p class="title">10-20 minutes</p>
+       <p><b>Set Up</b>: 4 cones in 2 lines</p>
+        <p><b>Players Needed:</b> size of your squad</p>
+        <p><b>Explanation:</b> A simple way of performing a dynamic warm-up is to have players go through different locomotions together in linesThere are plenty of great locomotions that coaches can use in dynamic warm-ups such as jogging lunges, squats, skippiing, high knees, butt kicks and many more</p>
+        <a href="https://www.youtube.com/watch?v=orZKw7CrGdY" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="column">
+    <div class="card">
+        <img src="../../../images/realy.PNG" alt="Jane" style="width:100%">
+      <div class="container">
+        <h4>Relay Cooldowns</h4>
+        <p class="title">2-10 minutes</p>
+       <p><b>Set Up</b>: 4 cones in 2 lines</p>
+        <p><b>Players Needed:</b> the size of your squad</p>
+        <p><b>Explanation:</b>Once players have finished going through some dynamic locomotions, relay races can be used to prepare players even further. Players enjoy the competitive aspect of relays. In addition, relay races are great for players to work on speed, agility, and quickness.As players will often times go through a dynamic warm-up in lines, it can be very easy to transition into a relay race in lines.</p><center>
+        <a href="https://www.youtube.com/watch?v=aHpyERP58N8" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a>
+       <br></center>
+      </div>
+    </div>
+  </div>
+
+<div class="column">
+    <div class="card">
+      <img src="../../../images/pass.png" alt="Mike" style="width:100%">
+      <div class="container">
+        <h4>Passing Cooldowns</h4>
+        <p class="title">5-10 minutes</p>
+       <p><b>Set Up</b>: cones 10 yards apart.</p>
+        <p><b>Players Needed:</b> your squad</p>
+        <p><b>Explanation:</b> Players just play the ball to the man directly in font of them and runs to the back of that line after the pass.Make players only use thier right foot and then their left foot. Limit their touches to one or two touches</p><center>
+        <a href="https://www.youtube.com/watch?v=Y91WBDukbhg&t=76s" target="_blank"><p><button style="width:250px" class="button">Video <i class="fab fa-youtube"></i></button></p></a>
+      </div></center>
+    </div>
+  </div>
+</div>
+                          </div>
+         </section>
+         <!-- Bootstrap core JavaScript -->
+         <script src="../../../vendor/jquery/jquery.min.js"></script>
+         <script src="../../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <!-- Plugin JavaScript -->
+         <script src="../../../vendor/jquery-easing/jquery.easing.min.js"></script>
+         <!-- Custom scripts for this template -->
+         <script src="../../../javascripts/script.js"></script>
+        <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+      </div>
+   </body>
+</html>

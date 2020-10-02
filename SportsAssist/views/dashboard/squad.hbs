@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Squad</title>
+      <!-- Bootstrap -->
+      <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Fonts -->
+      <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
+      <!-- Stylesheets -->
+      <link href="../stylesheets/styleFiachra.css" rel="stylesheet">
+   </head>
+   <body>
+      <div id="page-container">
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+         <a class="navbar-brand js-scroll-trigger" href="../">
+         <img class="logo" src="../images/logo.png"></a>
+         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+         Menu
+         <i class="fas fa-bars"></i>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+               <li class="nav-item">
+                  <a class="nav-link" href="#">My Teams</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link"  href="/forum">Join the Discussion</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link"  href="/account">My Account</a>
+               </li>
+               <li class="nav-item">
+                  <a class="nav-link"  href="/logout">Sign Out</a>
+               </li>
+            </ul>
+         </div>
+      </nav>
+      
+        <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+       <nav class="dashSubMenu" style=" margin-top: -68px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+      <section class="defaultContainer"  id="hub">
+         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet">
+         <div class="container" style="margin-top: 130px">
+         <br> 
+         <div class="row">
+         <input id="cybersecurityProtocol" value="{{cybersecurity}}" type="hidden"> 
+         {{#each teamMembers}}
+         <div class="col-lg-3">
+            <div class="card card-one">
+               <div class="header">
+                  <div class="avatar">
+                     <div  class="iconProDiv">
+                        {{#if this.users.proType}}
+                        <img id="iconPro2" class="iconPro2squad" style="background:{{this.users.col2}}" src="../images/{{this.users.proType}}/img2.png">
+                        <img id="iconPro1" class="iconPro1squad" style="background:{{this.users.col1}}" src="../images/{{this.users.proType}}/img1.png">
+                        {{else}}
+                        <img id="iconPro2" class="iconPro2squad" style="background:{{this.users.col2}}" src="../images/male2.png">
+                        <img id="iconPro1" class="iconPro1squad" style="background:{{this.users.col1}}" src="../images/male1.png">
+                        {{/if}}
+                     </div>
+                  </div>
+               </div>
+               <h3>{{this.users.name}}</h3>
+               <div class="contacts">
+                  {{#if this.users.userType}}  
+                  <div class="text-center" > <br>  {{../team.teamName}} Manager</div>
+                  {{#if ../user.userType}}<br><br>{{/if}}
+                  {{else}}
+                  {{#if ../user.userType}}
+                  <input type="hidden" name="team_id">
+                  <a   id="{{this.users._id}}" name="GoalUp"><i class="fas fa-angle-up"  ></i></a>
+                  <a  id="{{this.users._id}}" name="MomUp"><i class="fas fa-angle-up"  ></i></a>
+                  <a id="{{this.users._id}}" name="CardUp"><i class="fas fa-angle-up" ></i></a>
+                  <a id="{{this.users._id}}" name="CleanSheetUp"><i class="fas fa-angle-up" ></i></a>
+                  <a  id="{{this.users._id}}" name="AssistUp"><i class="fas fa-angle-up"  ></i></a>
+                  {{/if}}
+                  <a href="#"><i class="fas fa-futbol"  title='Goals'   id="{{this.users._id}}" ></i></a>
+                  <a href="#"><i class="fas fa-medal"  title='Man of the Match'  id="{{this.users._id}}"></i></i></a>
+                  <a href="#"><i class="fas fa-sticky-note" title='Cards' id="{{this.users._id}}"></i></a>
+                  <a href="#"><i class="fas fa-mitten"   title='Clean Sheets'   id="{{this.users._id}}"></i></a>
+                  <a href="#"><i class="fas fa-running"  title='Assists'   id="{{this.users._id}}"></i></a>
+                  {{#if ../user.userType}}
+                  <a   id="{{this.users._id}}" name="GoalDown"><i class="fas fa-angle-down"></i></a>
+                  <a   id="{{this.users._id}}" name="MomDown"><i class="fas fa-angle-down"></i></a>
+                  <a   id="{{this.users._id}}" name="CardDown"><i class="fas fa-angle-down"></i></a>
+                  <a  id="{{this.users._id}}" name="CleanSheetDown"><i class="fas fa-angle-down"></i></a>
+                  <a  id="{{this.users._id}}" name="AssistDown"><i class="fas fa-angle-down" ></i></a>
+                  {{/if}}
+                  <a  id="G-{{this.users._id}}">{{this.teamuserrels.goals}}</a>  <!--- Goals --> 
+                  <a   id="M-{{this.users._id}}">{{this.teamuserrels.mom}}</a>  <!--- Man of the match --> 
+                  <a id="C-{{this.users._id}}">{{this.teamuserrels.cards}}</a>    <!--- Cards --> 
+                  <a  id="X-{{this.users._id}}">{{this.teamuserrels.clean_sheets}}</a>    <!--- Clean Sheets --> 
+                  <a  id="A-{{this.users._id}}">{{this.teamuserrels.assist}} </a>    <!--- Assists --> 
+                  {{/if}}
+                  <div class="clear"> </div>
+               </div>
+               <!--- allow save change  Z --------> 
+               <span id="Z-{{this.users._id}}" style="display:none;" class="saveChangeDiv">
+                  <div class="text-center"><button style="width:150px" class="button">Save <i class="fas fa-save"></i></button></div>
+                  &nbsp; 
+               </span>
+               <div class="footer">
+                  <span class="contactInfo"><i class="fas fa-phone"> {{this.users.phoneNumber}}</i></span>
+                  <span class="contactInfo">&emsp;&emsp;<i class="fas fa-envelope"></i> {{this.users.email}}</span>
+               </div>
+            </div>
+         </div>
+         {{/each}}
+      </section>
+      <br> <br><br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+      <!-- Bootstrap core JavaScript -->
+      <script src="../vendor/jquery/jquery.min.js"></script>
+      <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- Plugin JavaScript -->
+      <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+      <!-- Custom scripts for this template -->
+      <script src="../javascripts/newScript.js"></script>
+      <section>
+      <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+      </section>
+   </body>
+</html>

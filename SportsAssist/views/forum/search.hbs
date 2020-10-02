@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <title>Forum</title>
+      <!-- Bootstrap -->
+      <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Fonts -->
+      <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+      <!-- Stylesheets -->
+      <link href="../stylesheets/styleFiachra.css" rel="stylesheet">
+      <script>
+         function handleLoad(){
+             let pageNow = {{page}}; 
+             let totalPages = {{pages}}; 
+         document.getElementById("back").href = '/posts/page/' +(pageNow - 1)
+          document.getElementById("forward").href = '/posts/page/' + (pageNow + 1)
+             if(pageNow === 1)
+                 {
+                 document.getElementById("back1").style.display = "none"; 
+                 document.getElementById("back").style.display = "none";  
+                 }
+             
+             if(!(pageNow < totalPages))
+             {
+              document.getElementById("forward1").style.display = "none"; 
+                 document.getElementById("forward").style.display = "none";  
+             }
+         }
+          
+      </script>
+   </head>
+   </head>
+   <body onload="handleLoad()">
+      <div id="page-container">
+         <!-- Navigation -->
+         <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <a class="navbar-brand js-scroll-trigger" href="../">
+            <img class="logo" src="../images/logo.png"></a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+               <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                     <a class="nav-link" href="/teams">My Teams</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/forum">Join the Discussion</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/account">My Account</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link" href="/logout">Sign Out</a>
+                  </li>
+               </ul>
+            </div>
+         </nav>
+         <section class="defaultContainer" id="forum">
+            <div class="container" >
+               <div class="col-lg-12">
+                  <center>
+                  <h2>Public Discussion Forum</h2>
+                  <center>
+               </div>
+               <div class="row text-center">
+                  <div  class="col-lg-12 text-center">
+                     <form  style="float: left" class="form-signin" action="/forum/add" method="POST">
+                        <div class="form-group">
+                           <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+                           <input type="hidden" name="id" />
+                           <input class="form-control" style="width: 700px;"type="text" name="title" id="vidCode" placeholder="Post Title" value="" />
+                        </div>
+                        <div class="form-group">
+                           <textarea class="form-control" style="width: 1100px; height: 250px" id="vidCode" name="content" rows="10" placeholder="Post Content"></textarea>
+                        </div>
+                        <div style="float: right"class="formgroup">
+                           <button class="button" style="width: 300px;" type="submit" name="submit">Start a Discussion</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="container">
+               <div class="row text-center">
+                  <div class="container">
+                     <div class="row text-center"></div>
+                     <div class="row text-center">
+                     </div>
+                     <div class="row text-center">
+                        <div class="col-lg-6">
+                           <br>
+                           <form style="width:1100px;"action="/forum/search" method="GET">
+                              <div class="form-group" style="width:1100px" >
+                                 <table>
+                                    <tr>
+                                       <td><input id="vidCode" style="width:1000px;" class="form-control" type="text" name="q" placeholder="Search The Forum"  />
+                                       </td>
+                                       <td><button class="button" style="width:60px; margin-left: 20px" type="submit" name="upload"><i class="fas fa-search"></i></button>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>
+                                          <h5 style="margin-top: 20px">Showing posts that contain "{{pageTitle}}" | <a href="/forum">Show all posts</a></h5>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </form>
+                        </div>
+                        <div class="col-lg-12">
+                           {{#if posts}} {{#each posts}}
+                           <div class="card mb-4">
+                              <div class="card-body">
+                                 <p class="text-left"><b> <a class="post-card-title" href="/forum/post/{{this.slug}}"> {{this.title}} </a> </b></p>
+                                 <p id="postDate" class="text-left"> {{this.created}}</p>
+                                 <p class="text-left"> {{this.content}}</p>
+                                 <p class="text-right"> {{this.author.name}} </p>
+                              </div>
+                           </div>
+                           {{/each}} {{else}}
+                           <h4> No Posts Found </h4>
+                           {{/if}}
+                        </div>
+                        <nav class="text-center" aria-label="page navigation example">
+                           <ul class="pagination text-center">
+                              <li class="button" style="width:100px"> <a id="back" style="color: white"  href="/forum/posts/page/"> Prev </a> </li>
+                              <!---------- Fiachra these links DO NOT WORK... We will require some manipulation via the global vars in order to properly use them ---------->
+                              <li class="button" style="width:100px; margin-left: 10px;"><a id="forward" style="color: white" href="/forum/posts/page/">Next</a></li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- Bootstrap core JavaScript -->
+         <script src="../vendor/jquery/jquery.min.js"></script>
+         <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+         <!-- Plugin JavaScript -->
+         <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+         <!-- Custom scripts for this template -->
+         <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+         <script src="../javascripts/script.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"> </script>
+         <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+      </div>
+   </body>
+</html>

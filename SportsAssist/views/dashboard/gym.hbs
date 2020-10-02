@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Workouts</title>
+
+  <!-- Bootstrap -->
+
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Fonts -->
+
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../vendor/simple-line-icons/css/simple-line-icons.css">
+
+
+  <!-- Stylesheets -->
+
+  <link href="../stylesheets/styleFiachra.css" rel="stylesheet">
+  <link href="../stylesheets/Shainfixturesstyle.css" rel="stylesheet">
+
+
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-serialize-object/2.5.0/jquery.serialize-object.min.js"></script>
+
+      <script>
+
+      var exerciseCount = 2;
+      var tempArray = []; 
+      var arrayProtoType;
+
+      </script>
+
+</head>
+<body>
+
+    <div id="page-container">
+
+  <!-- Navigation -->
+
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+      <a class="navbar-brand js-scroll-trigger" href="../">
+
+      <img class="logo" src="../images/logo.png"></a>
+      
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/teams">My Teams</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/forum">Join the Discussion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/account">My Account</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"  href="/logout">Sign Out</a>
+            </li>
+
+        </ul>
+
+      
+
+    </div>
+  
+  </nav>
+
+    
+        <form method="POST" id="form" style="display:none"action="/dashboard/noticeboard">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+             <input type="hidden" name="team" value="{{team._id}}">
+             <input type="hidden" name="player" value="{{user._id}}">
+         </form>
+      
+    <nav class="dashSubMenu" style=" margin-top: -68px;">
+         <ul>
+           {{#if user.userType}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/settings">Settings</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/email">Team Email</a>
+            </li>
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/noticeboard/create">Noticeboard</a>
+            </li>
+            {{else}}
+            <li style="float: right" class="nav-item">
+               <a class="nav-link" href="/dashboard/details">Team Details</a>
+            </li>
+            <li style="float: right" id="notLink" class="nav-item">
+               <a class="nav-link">Noticeboard</a>
+            </li>
+            {{/if}}
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/nutrition">Nutrition</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link"  href="/dashboard/gym">Gym</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/training">Training</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/forum">Forum</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/results">Results</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/fixtures">Fixtures</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/squad">Squad</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/video">Video Analysis</a>
+               </li>
+               <li style="float: right" class="nav-item">
+                  <a class="nav-link" href="/dashboard/formations">Formations</a>
+               </li>
+               <li style="float: left" class="nav-item">
+                  <a class="nav-link" href="/dashboard">{{team.teamName}}</a>
+               </li>
+            </ul>
+         </nav>
+
+  <section class="defaultContainer"  id="forum">
+<div class="container" style="margin-top: 130px"><center>
+ <h2 class="fixt">Workouts</h2></center>
+ <div class="container-md" id="fixturesmain">
+  {{#if user.userType}}
+    <form style="width:1100px;"id="exerciseForm" action="/dashboard/gym" method="POST">
+            <input type="hidden" name="_csrf" value="{{cybersecurity}}"/>
+            <input type="hidden" id="reqcontent" name="reqcontent" value = "">
+         
+            <table class="resultsAndFix" id="exercises">
+              <tr>
+                <td>
+                  <input id="exerciseName1" type="text" name="name" placeholder="Exercise" value="">
+                </td>
+                <td>
+                 <input id="exerciseSets1"type="text" name="sets" placeholder="Sets" value="">
+                </td>
+                <td>
+                  <input id="exerciseReps1" type="text"  name="reps" placeholder="Reps" value="">
+                </td>
+                <td>
+                  <input id="exerciseWeight1" type="text"  name="weight" placeholder="Weight" value="">
+                </td>
+            
+              </tr>
+            </table>
+            <center>
+
+            <button style=" width:250px" id="appendexercise" type="button" class="button">Add Exercise <i class="fas fa-plus"></i></button>
+            
+            <button style="margin-left:20px; width:250px" id="submitworkout" type="button" class="button">Submit Workout <i class="fas fa-dumbbell"></i></button>
+        
+        </center>
+            
+                  </form>
+                  {{/if}}
+                  <center>
+
+
+
+{{#each exerciseArr}}
+  <table class="contactTab">
+    <tr>
+      <th>
+        Exercise
+      </th>
+      <th>
+        Sets
+      </th>
+      <th>
+        Reps
+      </th>
+      <th>
+        Weight
+      </th>
+    </tr>
+     {{#each exercises}}
+      <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.sets}} </td>
+      <td>{{this.reps}} </td>
+      <td>{{this.weight}}</td>
+      </tr>
+      {{/each}} 
+  </table>
+  {{/each}}
+  </center>
+  </div>
+   
+   
+  </section>
+  
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Plugin JavaScript -->
+  <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../javascripts/script.js"></script>
+
+
+  <footer>
+    <div class="container">
+      <p style="color: rgba(255, 255, 255, 0.3)">&copy; SportsAssist 2020 | All Rights Reserved | <a style="color: rgba(255, 255, 255, 0.3)" href="/terms">T&Cs</a> | Fiachra Healy, Seosamh Ó Roibín, Aleksander Kosnik, Shain Sutton</p>
+      </div>
+  </footer>
+
+</div>
+
+  </body>
+</html>
